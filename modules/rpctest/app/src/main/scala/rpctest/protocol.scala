@@ -9,7 +9,7 @@ package rpctest {
     @message
     case class HelloResponse(message: String)
 
-    @service(Protobuf, Identity, Some("rpctest.pkg"), Capitalize)
+    @service(Protobuf, namespace = Some("rpctest.pkg"), methodNameStyle = Capitalize)
     trait Greeter[F[_]] {
       def sayHello(request: HelloRequest): F[HelloResponse]
     }
